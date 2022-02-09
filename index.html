@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Bugr</title>
   </head>
   <body>
@@ -18,14 +25,17 @@
           value=""
           class="border border-gray-300 p-2 w-full my-4 rounded"
         />
-        <button id="submitBtn" class="bg-green-400 px-8 py-2 my-2 rounded">
+        <button
+          id="submitBtn"
+          class="bg-green-400 px-8 py-2 my-2 rounded text-white"
+        >
           Submit
         </button>
       </form>
 
       <!-- List -->
       <div class="border border-gray-300 rounded p-8 mt-8">
-        <h2>All Bugs</h2>
+        <h2>Current Bugs</h2>
         <ul id="bugList"></ul>
       </div>
     </main>
