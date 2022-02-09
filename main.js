@@ -21,7 +21,7 @@ function createBug(e) {
   list.appendChild(li);
 
   // Push item to localStorage
-  store({ title: input.value });
+  store({ title: input.value, priority: priority.value });
 
   // Reset input
   input.value = '';

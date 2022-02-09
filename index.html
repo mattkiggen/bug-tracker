@@ -15,28 +15,34 @@
     <title>Bugr</title>
   </head>
   <body>
-    <main class="w-[900px] mx-auto mt-8">
+    <main class="w-[900px] mx-auto mt-8 p-4">
       <!-- Create Form -->
       <div class="border border-gray-300 rounded p-8">
         <h2 class="text-2xl mb-4">Add New Bug</h2>
         <form id="addBug">
-          <label for="bugInput">Title</label>
-          <input
-            id="bugInput"
-            type="text"
-            value=""
-            class="border border-gray-300 p-2 w-full my-4 rounded"
-          />
-          <label for="bugPriority">Priority</label>
-          <select
-            name="priority"
-            id="bugPriority"
-            class="border border-gray-300 p-2 w-full my-4 rounded"
-          >
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-          </select>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="col-span-2">
+              <label for="bugInput">Description</label>
+              <input
+                id="bugInput"
+                type="text"
+                value=""
+                class="border border-gray-300 p-2 w-full my-4 rounded h-12"
+              />
+            </div>
+            <div>
+              <label for="bugPriority">Priority</label>
+              <select
+                name="priority"
+                id="bugPriority"
+                class="border border-gray-300 p-2 w-full my-4 rounded h-12"
+              >
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+          </div>
           <button
             id="submitBtn"
             class="bg-green-400 px-8 py-2 my-2 rounded text-white"
@@ -54,6 +60,7 @@
         <ul id="bugList"></ul>
       </div>
     </main>
+
     <script>
       tailwind.config = {
         theme: {
