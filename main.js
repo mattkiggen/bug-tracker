@@ -1,6 +1,7 @@
 // Define UI variables
 const form = document.querySelector('#addBug');
 const input = document.querySelector('#bugInput');
+const priority = document.querySelector('#bugPriority');
 const submit = document.querySelector('#submitBtn');
 const list = document.querySelector('#bugList');
 
@@ -36,7 +37,7 @@ function createLi(value) {
   // Create delete button
   const delBtn = document.createElement('button');
   delBtn.className = 'delete-bug';
-  delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+  delBtn.innerHTML = '<i class="fa-solid fa-bug-slash"></i>';
   li.appendChild(delBtn);
   return li;
 }
@@ -50,13 +51,18 @@ function deleteBug(e) {
   }
 }
 
+// Get current data
+function getDataFromLocalStorage() {
+  return JSON.parse(localStorage.getItem('bugs'));
+}
+
 // Store data in localStorage
 function store(data) {
   const currentBugs = getDataFromLocalStorage();
 
   let bugs;
   if (currentBugs) {
-    bugs = JSON.parse(currentBugs);
+    bugs = currentBugs;
     bugs.push(data);
   } else {
     bugs = Array(data);
@@ -65,18 +71,12 @@ function store(data) {
   localStorage.setItem('bugs', JSON.stringify(bugs));
 }
 
-// Get current data
-function getDataFromLocalStorage() {
-  return localStorage.getItem('bugs');
-}
-
 // Remove bug from localStorage
 function deleteFromLocalStorage(title) {
   const currentBugs = getDataFromLocalStorage();
 
   if (currentBugs) {
-    const parsedList = JSON.parse(currentBugs);
-    const filtered = parsedList.filter((bug) => bug.title !== title);
+    const filtered = currentBugs.filter((bug) => bug.title !== title);
     localStorage.setItem('bugs', JSON.stringify(filtered));
   }
 }
@@ -89,8 +89,7 @@ function main() {
   const data = getDataFromLocalStorage();
 
   if (data) {
-    const parsed = JSON.parse(data);
-    parsed.map((bug) => {
+    data.map((bug) => {
       const li = createLi(bug.title);
       list.appendChild(li);
     });
